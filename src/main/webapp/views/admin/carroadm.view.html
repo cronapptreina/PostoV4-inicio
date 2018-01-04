@@ -1,0 +1,178 @@
+<h3>Carro</h3> 
+<!-- div row para pesquisa --> 
+<!--<div class="row">--> 
+<div ng-hide="Carro.inserting || Carro.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class=""> 
+  <div class="form-group"> 
+    <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label> 
+    <input type="text" ng-model="vars.search" cronapp-filter="placa;" cronapp-filter-operator="" cronapp-filter-autopost="true" crn-datasource="Carro" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}"> 
+  </div> 
+</div> 
+<div data-component="crn-button" id="crn-button-564202" class=""> 
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Carro.startInserting()" ng-hide="Carro.inserting || Carro.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button> 
+</div> 
+<!-- fim div row para pesquisa --> 
+<!--</div>--> 
+<datasource filter="" name="Carro" entity="api/cronapi/crud/app.entity.Carro" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource> 
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Carro"> 
+  <div crn-datasource="Carro" class="" ng-hide="Carro.editing || Carro.inserting"> 
+    <table class="table  table-bordered table-hover table-striped"> 
+      <thead> 
+        <tr class="table-header"> 
+          <th class=""> 
+            <div class="">
+               Placa 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               Marca 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               Modelo 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               Ano 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               User 
+            </div> </th> 
+          <th class=""> 
+            <div class="">
+               {{"template.crud.actions" | translate}} 
+            </div> </th> 
+        </tr> 
+      </thead> 
+      <tbody> 
+        <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+          <td class=""> 
+            <div class="">
+               {{rowData.placa | mask:'AAA-9999' }} 
+            </div> </td> 
+          <td class=""> 
+            <div class="">{{rowData.marcaFIPE.fipe_name}}</div> </td> 
+          <td class=""> 
+            <div class="">{{rowData.modeloFIPE.fipe_name}}</div> </td> 
+          <td class=""> 
+            <div class="">
+               {{rowData.ano }} 
+            </div> </td> 
+          <td class=""> 
+            <div class="">
+               {{rowData.user.email}} 
+            </div> </td> 
+          <td class=""> 
+            <div class=""> 
+              <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button> 
+              <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button> 
+            </div> </td> 
+        </tr> 
+      </tbody> 
+    </table> 
+    <div class="table-footer-controls"> 
+      <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button> 
+    </div> 
+  </div> 
+</div> 
+<div data-component="crn-form" id="crn-form-form-Carro"> 
+  <div class="form" ng-show="Carro.editing || Carro.inserting"> 
+    <form crn-datasource="Carro" class=""> 
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting"> 
+        <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button> 
+        <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button> 
+        <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button> 
+        <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button> 
+        <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button> 
+      </div> 
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting"> 
+        <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button> 
+        <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button> 
+      </div> 
+      <br> 
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting"> 
+        <div data-component="crn-textinput" id="crn-textinput-placa" class=""> 
+          <div class="form-group"> 
+            <label for="textinput-placa" class="">Placa</label> 
+            <!-- else for if !model.hasCronappFramework() --> 
+            <input type="text" ng-model="Carro.active.placa" class="form-control" id="textinput-placa" placeholder="Placa" mask="AAA-9999" mask-placeholder="" ng-required="true"> 
+            <!-- end if !model.hasCronappFramework() --> 
+          </div> 
+        </div> 
+         
+                <datasource name="MarcaFIPE" entity="api/cronapi/query/ursfjhzjec0x/" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" id="crn-datasource-498540"></datasource>
+        <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-115102">
+          <div class="form-group">
+            <label for="">{{'Marca' | translate}}</label>
+            <ui-select crn-datasource="MarcaFIPE" ng-model="Carro.active.marcaFIPE" ng-disabled="disabled" theme="bootstrap" class="crn-select" ng-required="false">
+              <ui-select-match placeholder="Select..." class="">
+                {{$select.selected.fipe_name}}
+              </ui-select-match>
+              <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                <div class="">
+                  {{rowData.fipe_name}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <datasource name="ModeloFIPE" entity="api/cronapi/query/1hvb0lmg3dizq/{{Carro.active.marcaFIPE}}/" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" id="crn-datasource-886940" dependent-by="{{MarcaFIPE}}"></datasource>
+        <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-744646">
+          <div class="form-group">
+            <label for="">{{'Modelo' | translate}}</label>
+            <ui-select crn-datasource="ModeloFIPE" ng-model="Carro.active.modeloFIPE" ng-disabled="disabled" theme="bootstrap" class="crn-select" ng-required="false">
+              <ui-select-match placeholder="Select..." class="">
+                {{$select.selected.fipe_name}}
+              </ui-select-match>
+              <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                <div class="">
+                  {{rowData.fipe_name}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div> 
+
+        
+         
+         
+        <div data-component="crn-textinput" id="crn-textinput-ano" class=""> 
+          <div class="form-group"> 
+            <label for="textinput-ano" class="">Ano</label> 
+            <!-- else for if !model.hasCronappFramework() --> 
+            <input type="integer" ng-model="Carro.active.ano" class="form-control" id="textinput-ano" placeholder="Ano" mask="" mask-placeholder="" ng-required="true"> 
+            <!-- end if !model.hasCronappFramework() --> 
+          </div> 
+        </div> 
+        <datasource name="User" entity="api/cronapi/crud/app.entity.User" keys="id" class="" dependent-by="{{Carro}}"></datasource> 
+        <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-user" class=""> 
+          <div class="form-group"> 
+            <label for="combobox-dynamic-user" class="">User</label> 
+            <!-- else for if !model.hasCronappFramework() --> 
+            <ui-select ng-model="Carro.active.user" crn-datasource="User" class="crn-select" id="combobox-dynamic-user" ng-required="true" theme="bootstrap"> 
+              <ui-select-match class="" placeholder="Select...">
+                 {{$select.selected.email}} 
+              </ui-select-match> 
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay=""> 
+                <div class="" data-container="true">
+                   {{rowData.email}} 
+                </div> 
+              </ui-select-choices> 
+            </ui-select> 
+            <!-- end if !model.hasCronappFramework() --> 
+          </div> 
+        </div> 
+        <!-- NtoN  --> 
+        <!-- NtoN  end--> 
+      </fieldset> 
+    </form> 
+    <form> 
+      <fieldset> 
+        <!-- OneToN --> 
+        <!-- OneToOne  end --> 
+      </fieldset> 
+    </form> 
+  </div> 
+</div> 
+<!-- OneToOne modal --> 
+<!-- OneToOne modal end-->

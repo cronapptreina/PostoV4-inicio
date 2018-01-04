@@ -1,0 +1,965 @@
+{
+	"auth": {
+		"customId": "auth",
+		"queryName": "Autenticar",
+		"screen": "",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "User",
+		"entityFullName": "app.entity.User",
+		"query": "select o from User o where o.login = :login",
+		"queryParamsValues": [
+			{
+				"fieldName": "login",
+				"fieldValue": ""
+			}
+		],
+		"verbs": {
+			"GET": false,
+			"GETAuthorities": null,
+			"POST": false,
+			"POSTAuthorities": null,
+			"PUT": false,
+			"PUTAuthorities": null,
+			"DELETE": false,
+			"DELETEAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"email": null,
+			"name": null,
+			"login": null,
+			"picture": null,
+			"password": null,
+			"theme": null
+		},
+		"security": {
+			"id": null,
+			"email": null,
+			"name": null,
+			"login": null,
+			"picture": null,
+			"password": null,
+			"theme": null
+		},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/auth/"
+	},
+	"roles": {
+		"customId": "roles",
+		"queryName": "Obter Autorização",
+		"screen": "",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "Role",
+		"entityFullName": "app.entity.Role",
+		"query": "select o.id from Role o where o.user.login = :login",
+		"queryParamsValues": [
+			{
+				"fieldName": "login",
+				"fieldValue": ""
+			}
+		],
+		"verbs": {
+			"GET": false,
+			"GETAuthorities": null,
+			"POST": false,
+			"POSTAuthorities": null,
+			"PUT": false,
+			"PUTAuthorities": null,
+			"DELETE": false,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"user": null
+		},
+		"security": {
+			"id": null,
+			"user": null
+		},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/roles/"
+	},
+	"tenant": {
+		"customId": "tenant",
+		"queryName": "Obter Id de Multi-inquilino",
+		"screen": "",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "User",
+		"entityFullName": "app.entity.User",
+		"query": "select u.company.id from User u where u.login = :login",
+		"queryParamsValues": [
+			{
+				"fieldName": "login",
+				"fieldValue": ""
+			}
+		],
+		"verbs": {
+			"GET": false,
+			"GETAuthorities": null,
+			"POST": false,
+			"POSTAuthorities": null,
+			"PUT": false,
+			"PUTAuthorities": null,
+			"DELETE": false,
+			"DELETEAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"email": null,
+			"name": null,
+			"login": null,
+			"picture": null,
+			"password": null,
+			"theme": null
+		},
+		"security": {
+			"id": null,
+			"email": null,
+			"name": null,
+			"login": null,
+			"picture": null,
+			"password": null,
+			"theme": null
+		},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/tenant/"
+	},
+	"1iaxm1xjkla9f": {
+		"customId": "AbastecCalc",
+		"queryName": "Abastecimento_com_campos_calculados",
+		"screen": "src/main/webapp/views/logged/abastecimento.view.html",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "Abastecimento",
+		"entityFullName": "app.entity.Abastecimento",
+		"query": {
+			"isValid": true,
+			"isEmpty": false,
+			"operationType": "object",
+			"multiTenant": true,
+			"type": "select",
+			"rulesEntity": [
+				{
+					"entity": "Abastecimento",
+					"alias": "a"
+				}
+			],
+			"rulesSelect": [
+				{
+					"func": "get",
+					"field": "a",
+					"type": "string"
+				}
+			],
+			"rulesGroupBy": [],
+			"rulesHaving": [],
+			"rulesOrderBy": [],
+			"rules": {
+				"condition": "AND",
+				"rules": [
+					{
+						"id": "a.carro.user.login",
+						"field": "a.carro.user.login",
+						"type": "string",
+						"input": "text",
+						"operator": "equal",
+						"value": ":carroUserLogin",
+						"valueIsField": false
+					}
+				],
+				"not": false,
+				"valid": true
+			}
+		},
+		"queryParamsValues": [
+			{
+				"fieldName": "carroUserLogin",
+				"fieldValue": {
+					"blocklyClass": "blockly.Usuario",
+					"blocklyMethod": "buscarLoginUsuarioLogado",
+					"blocklyLanguage": "java",
+					"blocklyJson": {
+						"namespace": "blockly.Usuario",
+						"classNameNew": "Usuario",
+						"classNameOld": "Usuario",
+						"sourcePath": "src/main/java/blockly/Usuario.blockly",
+						"language": "java",
+						"class": "blockly.Usuario",
+						"methods": [
+							{
+								"name": "obterUsuarioLogado",
+								"hasReturn": "true",
+								"params": []
+							},
+							{
+								"name": "buscarLoginUsuarioLogado",
+								"hasReturn": "true",
+								"params": []
+							}
+						]
+					},
+					"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.Usuario:buscarLoginUsuarioLogado', null, null)"
+				}
+			}
+		],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"data": null,
+			"km": null,
+			"valor": null,
+			"precoLitro": null,
+			"carro": null,
+			"posto": null
+		},
+		"security": {
+			"id": null,
+			"data": null,
+			"km": null,
+			"valor": null,
+			"precoLitro": null,
+			"carro": null,
+			"posto": null
+		},
+		"calcFields": {
+			"custoKm": {
+				"blocklyClass": "blockly.AbasteceCalc",
+				"blocklyMethod": "custoKm",
+				"blocklyLanguage": "java",
+				"blocklyJson": {
+					"namespace": "blockly.AbasteceCalc",
+					"classNameNew": "AbasteceCalc",
+					"classNameOld": "AbasteceCalc",
+					"sourcePath": "src/main/java/blockly/AbasteceCalc.blockly",
+					"language": "java",
+					"class": "blockly.AbasteceCalc",
+					"methods": [
+						{
+							"name": "custoKm",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Abastecimento>"
+							]
+						}
+					]
+				},
+				"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.AbasteceCalc:custoKm', null, null)",
+				"blocklyGETMethod": null,
+				"blocklyPOSTMethod": null,
+				"blocklyPUTMethod": null,
+				"blocklyDELETEMethod": null,
+				"blocklyFILTERMethod": null
+			},
+			"consumoMedio": {
+				"blocklyClass": "blockly.AbasteceCalc",
+				"blocklyMethod": "consumoMedio",
+				"blocklyLanguage": "java",
+				"blocklyJson": {
+					"namespace": "blockly.AbasteceCalc",
+					"classNameNew": "AbasteceCalc",
+					"classNameOld": "AbasteceCalc",
+					"sourcePath": "src/main/java/blockly/AbasteceCalc.blockly",
+					"language": "java",
+					"class": "blockly.AbasteceCalc",
+					"methods": [
+						{
+							"name": "custoKm",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Abastecimento>"
+							]
+						},
+						{
+							"name": "consumoMedio",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Abastecimento>"
+							]
+						}
+					]
+				},
+				"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.AbasteceCalc:consumoMedio', null, null)",
+				"blocklyGETMethod": null,
+				"blocklyPOSTMethod": null,
+				"blocklyPUTMethod": null,
+				"blocklyDELETEMethod": null,
+				"blocklyFILTERMethod": null
+			},
+			"placa": {
+				"blocklyClass": "blockly.AbasteceCalc",
+				"blocklyMethod": "custoKm",
+				"blocklyLanguage": "java",
+				"blocklyJson": {
+					"namespace": "blockly.AbasteceCalc",
+					"classNameNew": "AbasteceCalc",
+					"classNameOld": "AbasteceCalc",
+					"sourcePath": "src/main/java/blockly/AbasteceCalc.blockly",
+					"language": "java",
+					"class": "blockly.AbasteceCalc",
+					"methods": [
+						{
+							"name": "custoKm",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Abastecimento>"
+							]
+						},
+						{
+							"name": "consumoMedio",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Abastecimento>"
+							]
+						}
+					]
+				},
+				"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.AbasteceCalc:custoKm', null, null)",
+				"blocklyGETMethod": null,
+				"blocklyPOSTMethod": null,
+				"blocklyPUTMethod": null,
+				"blocklyDELETEMethod": null,
+				"blocklyFILTERMethod": null
+			}
+		},
+		"calcFieldsSecurity": {
+			"custoKm": null,
+			"consumoMedio": null,
+			"placa": null
+		},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/1iaxm1xjkla9f/"
+	},
+	"soejwz0u63p2": {
+		"customId": "CarroCalc",
+		"queryName": "CarroCalc",
+		"screen": "src/main/webapp/views/logged/carro.view.html",
+		"sourceType": "entityFullName",
+		"blockly": null,
+		"entitySimpleName": "Carro",
+		"entityFullName": "app.entity.Carro",
+		"query": {
+			"isValid": true,
+			"isEmpty": false,
+			"operationType": "object",
+			"multiTenant": true,
+			"type": "select",
+			"rulesEntity": [
+				{
+					"entity": "Carro",
+					"alias": "c"
+				}
+			],
+			"rulesSelect": [
+				{
+					"func": "get",
+					"field": "c",
+					"type": "string"
+				}
+			],
+			"rulesGroupBy": [],
+			"rulesHaving": [],
+			"rulesOrderBy": [],
+			"rules": {
+				"condition": "AND",
+				"rules": [
+					{
+						"id": "c.user.login",
+						"field": "c.user.login",
+						"type": "string",
+						"input": "text",
+						"operator": "equal",
+						"value": ":userLogin",
+						"valueIsField": false
+					}
+				],
+				"not": false,
+				"valid": true
+			}
+		},
+		"queryParamsValues": [
+			{
+				"fieldName": "userLogin",
+				"fieldValue": {
+					"blocklyClass": "blockly.Usuario",
+					"blocklyMethod": "buscarLoginUsuarioLogado",
+					"blocklyLanguage": "java",
+					"blocklyJson": {
+						"namespace": "blockly.Usuario",
+						"classNameNew": "Usuario",
+						"classNameOld": "Usuario",
+						"sourcePath": "src/main/java/blockly/Usuario.blockly",
+						"language": "java",
+						"class": "blockly.Usuario",
+						"methods": [
+							{
+								"name": "buscarLoginUsuarioLogado",
+								"hasReturn": "true",
+								"params": []
+							}
+						]
+					},
+					"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.Usuario:buscarLoginUsuarioLogado', null, null)"
+				}
+			}
+		],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {
+			"id": null,
+			"placa": null,
+			"marca": null,
+			"modelo": null,
+			"ano": null,
+			"user": {
+				"blocklyClass": "blockly.Usuario",
+				"blocklyMethod": "obterUsuarioLogado",
+				"blocklyLanguage": "java",
+				"blocklyJson": {
+					"namespace": "blockly.Usuario",
+					"classNameNew": "Usuario",
+					"classNameOld": "Usuario",
+					"sourcePath": "src/main/java/blockly/Usuario.blockly",
+					"language": "java",
+					"class": "blockly.Usuario",
+					"methods": [
+						{
+							"name": "buscarLoginUsuarioLogado",
+							"hasReturn": "true",
+							"params": []
+						},
+						{
+							"name": "obterUsuarioLogado",
+							"hasReturn": "true",
+							"params": []
+						}
+					]
+				},
+				"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.Usuario:obterUsuarioLogado', null, null)",
+				"blocklyGETMethod": null,
+				"blocklyPOSTMethod": null,
+				"blocklyPUTMethod": null,
+				"blocklyDELETEMethod": null,
+				"blocklyFILTERMethod": null
+			}
+		},
+		"security": {
+			"id": null,
+			"placa": null,
+			"marca": null,
+			"modelo": null,
+			"ano": null,
+			"user": null
+		},
+		"calcFields": {
+			"ConsumoMedioCarro": {
+				"blocklyClass": "blockly.TelaCarro",
+				"blocklyMethod": "calculaConsumoMedioCarro",
+				"blocklyLanguage": "java",
+				"blocklyJson": {
+					"namespace": "blockly.TelaCarro",
+					"classNameNew": "TelaCarro",
+					"classNameOld": "TelaCarro",
+					"sourcePath": "src/main/java/blockly/TelaCarro.blockly",
+					"language": "java",
+					"class": "blockly.TelaCarro",
+					"methods": [
+						{
+							"name": "calculaConsumoMedioCarro",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Carro>"
+							]
+						},
+						{
+							"name": "calculaConsumoMedioCarro2",
+							"hasReturn": "true",
+							"params": [
+								"Entidade<app.entity.Carro>"
+							]
+						}
+					]
+				},
+				"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.TelaCarro:calculaConsumoMedioCarro', null, null)",
+				"blocklyGETMethod": null,
+				"blocklyPOSTMethod": null,
+				"blocklyPUTMethod": null,
+				"blocklyDELETEMethod": null,
+				"blocklyFILTERMethod": null
+			}
+		},
+		"calcFieldsSecurity": {
+			"ConsumoMedioCarro": null
+		},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/soejwz0u63p2/"
+	},
+	"s505igbdztk5": {
+		"customId": "CarrosCampeoes",
+		"queryName": "CarrosCampeoes",
+		"screen": "src/main/webapp/views/logged/carrosCampeos.view.html",
+		"sourceType": "blockly",
+		"blockly": {
+			"blocklyClass": "blockly.Campeoes",
+			"blocklyMethod": "calcular_carros",
+			"blocklyLanguage": "java",
+			"blocklyJson": {
+				"namespace": "blockly.Campeoes",
+				"classNameNew": "Campeoes",
+				"classNameOld": "Campeoes",
+				"sourcePath": "src/main/java/blockly/Campeoes.blockly",
+				"language": "java",
+				"class": "blockly.Campeoes",
+				"methods": [
+					{
+						"name": "calcular_carros",
+						"hasReturn": "true",
+						"params": []
+					}
+				]
+			},
+			"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.Campeoes:calcular_carros', null, null)",
+			"blocklyGETMethod": "calcular_carros",
+			"blocklyPOSTMethod": "calcular_carros",
+			"blocklyPUTMethod": "calcular_carros",
+			"blocklyDELETEMethod": "calcular_carros",
+			"blocklyFILTERMethod": "calcular_carros"
+		},
+		"entitySimpleName": null,
+		"entityFullName": null,
+		"query": "",
+		"queryParamsValues": [],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {},
+		"security": {},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/s505igbdztk5/"
+	},
+	"1hbaflwiuj0on": {
+		"customId": "1hbaflwiuj0on",
+		"queryName": "campeoes",
+		"screen": "src/main/webapp/views/logged/CarrosCampeoes.view.html",
+		"sourceType": "blockly",
+		"blockly": {
+			"blocklyClass": "blockly.Campeoes",
+			"blocklyMethod": "calcular_carros",
+			"blocklyLanguage": "java",
+			"blocklyJson": {
+				"namespace": "blockly.Campeoes",
+				"classNameNew": "Campeoes",
+				"classNameOld": "Campeoes",
+				"sourcePath": "src/main/java/blockly/Campeoes.blockly",
+				"language": "java",
+				"class": "blockly.Campeoes",
+				"methods": [
+					{
+						"name": "calcular_carros",
+						"hasReturn": "true",
+						"params": []
+					}
+				]
+			},
+			"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.Campeoes:calcular_carros', null, null)",
+			"blocklyGETMethod": "calcular_carros",
+			"blocklyPOSTMethod": "calcular_carros",
+			"blocklyPUTMethod": "calcular_carros",
+			"blocklyDELETEMethod": "calcular_carros",
+			"blocklyFILTERMethod": "calcular_carros"
+		},
+		"entitySimpleName": null,
+		"entityFullName": null,
+		"query": "",
+		"queryParamsValues": [],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {},
+		"security": {},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/1hbaflwiuj0on/"
+	},
+	"1ieuznfcewl6a": {
+		"customId": "PostosCampeoes",
+		"queryName": "PostosCampeoes",
+		"screen": "src/main/webapp/views/logged/PostosCampeoes.view.html",
+		"sourceType": "blockly",
+		"blockly": {
+			"blocklyClass": "blockly.PostosCampeoes",
+			"blocklyMethod": "listar",
+			"blocklyLanguage": "java",
+			"blocklyJson": {
+				"namespace": "blockly.PostosCampeoes",
+				"classNameNew": "PostosCampeoes",
+				"classNameOld": "PostosCampeoes",
+				"sourcePath": "src/main/java/blockly/PostosCampeoes.blockly",
+				"language": "java",
+				"class": "blockly.PostosCampeoes",
+				"methods": [
+					{
+						"name": "PopularGrafico",
+						"hasReturn": "false",
+						"params": [
+							"Dados"
+						]
+					},
+					{
+						"name": "listar",
+						"hasReturn": "true",
+						"params": []
+					}
+				]
+			},
+			"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.PostosCampeoes:listar', null, null)",
+			"blocklyGETMethod": "listar",
+			"blocklyPOSTMethod": "listar",
+			"blocklyPUTMethod": "listar",
+			"blocklyDELETEMethod": "listar",
+			"blocklyFILTERMethod": "listar"
+		},
+		"entitySimpleName": null,
+		"entityFullName": null,
+		"query": "",
+		"queryParamsValues": [],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": {
+				"blocklyClass": "blockly.PostosCampeoes",
+				"blocklyMethod": "PopularGrafico",
+				"blocklyLanguage": "java",
+				"blocklyJson": {
+					"namespace": "blockly.PostosCampeoes",
+					"classNameNew": "PostosCampeoes",
+					"classNameOld": "PostosCampeoes",
+					"sourcePath": "src/main/java/blockly/PostosCampeoes.blockly",
+					"language": "java",
+					"class": "blockly.PostosCampeoes",
+					"methods": [
+						{
+							"name": "PopularGrafico",
+							"hasReturn": "false",
+							"params": [
+								"Dados"
+							]
+						},
+						{
+							"name": "listar",
+							"hasReturn": "true",
+							"params": []
+						}
+					]
+				},
+				"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.PostosCampeoes:PopularGrafico', null, null)"
+			}
+		},
+		"defaultValues": {},
+		"security": {},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/1ieuznfcewl6a/"
+	},
+	"ursfjhzjec0x": {
+		"customId": "MarcaFIPE",
+		"queryName": "MarcaFIPE",
+		"screen": "src/main/webapp/views/logged/carro.view.html",
+		"sourceType": "blockly",
+		"blockly": {
+			"blocklyClass": "blockly.MarcaFIPE",
+			"blocklyMethod": "buscar",
+			"blocklyLanguage": "java",
+			"blocklyJson": {
+				"namespace": "blockly.MarcaFIPE",
+				"classNameNew": "MarcaFIPE",
+				"classNameOld": "MarcaFIPE",
+				"sourcePath": "src/main/java/blockly/MarcaFIPE.blockly",
+				"language": "java",
+				"class": "blockly.MarcaFIPE",
+				"methods": [
+					{
+						"name": "buscar",
+						"hasReturn": "true",
+						"params": []
+					}
+				]
+			},
+			"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.MarcaFIPE:buscar', null, null)",
+			"blocklyGETMethod": "buscar",
+			"blocklyPOSTMethod": "buscar",
+			"blocklyPUTMethod": "buscar",
+			"blocklyDELETEMethod": "buscar",
+			"blocklyFILTERMethod": "buscar"
+		},
+		"entitySimpleName": null,
+		"entityFullName": null,
+		"query": "",
+		"queryParamsValues": [],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {},
+		"security": {},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/ursfjhzjec0x/"
+	},
+	"1hvb0lmg3dizq": {
+		"customId": "ModeloFIPE",
+		"queryName": "ModeloFIPE",
+		"screen": "src/main/webapp/views/logged/carro.view.html",
+		"sourceType": "blockly",
+		"blockly": {
+			"blocklyClass": "blockly.ModeloFIPE",
+			"blocklyMethod": "buscar",
+			"blocklyLanguage": "java",
+			"blocklyJson": {
+				"namespace": "blockly.ModeloFIPE",
+				"classNameNew": "ModeloFIPE",
+				"classNameOld": "ModeloFIPE",
+				"sourcePath": "src/main/java/blockly/ModeloFIPE.blockly",
+				"language": "java",
+				"class": "blockly.ModeloFIPE",
+				"methods": [
+					{
+						"name": "buscar",
+						"hasReturn": "true",
+						"params": [
+							"marcaO"
+						]
+					}
+				]
+			},
+			"blocklyFunctionCall": "cronapi.util.makeCallServerBlocklyAsync('blockly.ModeloFIPE:buscar', null, null)",
+			"blocklyGETMethod": "buscar",
+			"blocklyPOSTMethod": "buscar",
+			"blocklyPUTMethod": "buscar",
+			"blocklyDELETEMethod": "buscar",
+			"blocklyFILTERMethod": "buscar"
+		},
+		"entitySimpleName": null,
+		"entityFullName": null,
+		"query": "",
+		"queryParamsValues": [
+			{
+				"fieldName": "marcaO",
+				"fieldValue": "Carro.active.marcaFIPE"
+			}
+		],
+		"verbs": {
+			"GET": true,
+			"GETAuthorities": null,
+			"POST": true,
+			"POSTAuthorities": null,
+			"PUT": true,
+			"PUTAuthorities": null,
+			"DELETE": true,
+			"DELETEAuthorities": null,
+			"FILTER": true,
+			"FILTERAuthorities": null
+		},
+		"events": {
+			"beforeInsert": null,
+			"beforeUpdate": null,
+			"beforeDelete": null,
+			"afterInsert": null,
+			"afterUpdate": null,
+			"afterDelete": null,
+			"onNavigate": null,
+			"onGetData": null
+		},
+		"defaultValues": {},
+		"security": {},
+		"calcFields": {},
+		"calcFieldsSecurity": {},
+		"errorHandles": {
+			"primaryKey": null,
+			"foreignKey": null
+		},
+		"serviceUrl": "api/cronapi/query/1hvb0lmg3dizq/{{Carro.active.marcaFIPE}}/"
+	}
+}

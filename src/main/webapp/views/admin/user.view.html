@@ -1,0 +1,228 @@
+<h3>User</h3>
+<div ng-hide="User.inserting || User.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general">
+  <div class="form-group">
+    <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
+    <input type="text" cronapp-filter="email;name;login" crn-datasource="User" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
+  </div>
+</div>
+<br>
+<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
+  <datasource filter="" name="User" entity="api/cronapi/crud/app.entity.User" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+</div>
+<div data-component="crn-button" id="crn-button-564202">
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="User.startInserting()" ng-hide="User.inserting || User.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-User">
+  <div crn-datasource="User" class="" ng-hide="User.editing || User.inserting">
+    <table class="table  table-bordered table-hover table-striped">
+      <thead>
+        <tr class="table-header">
+          <th class="">
+            <div class="">Email</div>
+          </th>
+          <th class="">
+            <div class="">Nome</div>
+          </th>
+          <th class="">
+            <div class="">Login</div>
+          </th>
+          <th class="">
+            <div class="">Imagem</div>
+          </th>
+          <th class="">
+            <div class="">{{"template.crud.actions" | translate}}</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-content" ng-repeat="rowData in datasource.data">
+          <td class="">
+            <div class="">
+              {{rowData.email}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.name}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.login}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              <a ng-if="rowData.picture" ng-click="datasource.openImage(rowData.picture)">
+              <img data-ng-src="{{rowData.picture.startsWith('http') || (rowData.picture.startsWith('/') &amp;&amp; rowData.picture.length < 1000)? rowData.picture : 'data:image/png;base64,' + rowData.picture}}" style="max-height: 30px;">
+              </a>
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-footer-controls">
+      <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+    </div>
+  </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-User">
+  <div class="form" ng-show="User.editing || User.inserting">
+    <form crn-datasource="User" class="">
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+      </div>
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+      </div>
+      <br>
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+        
+        <div data-component="crn-textinput" id="crn-textinput-email">
+          <div class="form-group">
+            <label for="textinput-email" class="">Email</label>
+            <input type="text" ng-model="User.active.email" class="form-control" id="textinput-email" placeholder="Email">
+          </div>
+        </div>
+        
+        <div data-component="crn-textinput" id="crn-textinput-name">
+          <div class="form-group">
+            <label for="textinput-name" class="">Nome</label>
+            <input type="text" ng-model="User.active.name" class="form-control" id="textinput-name" placeholder="Nome" required="required">
+          </div>
+        </div>
+        
+        <div data-component="crn-textinput" id="crn-textinput-login">
+          <div class="form-group">
+            <label for="textinput-login" class="">Login</label>
+            <input type="text" ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="Login" required="required">
+          </div>
+        </div>
+        
+        <div data-component="crn-dynamic-image" id="crn-textinput-picture">
+          <div class="form-group">
+            <label for="textinput-picture" class="">Imagem</label>
+            <dynamic-image ng-model="User.active.picture" width="" height="" style="" class=""> 
+              <img src="http://placehold.it/50x50" style="display:block; width:100px; height: 100px;"> 
+            </dynamic-image>
+          </div>
+        </div>
+        
+        <div data-component="crn-textinput" id="crn-textinput-password">
+          <div class="form-group">
+            <label for="textinput-password" class="">Senha</label>
+            <input type="password" ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="Senha" required="required">
+          </div>
+        </div>
+        
+        <div data-component="crn-textinput" id="crn-textinput-theme">
+          <div class="form-group">
+            <label for="textinput-theme" class="">Tema</label>
+            <input type="text" ng-model="User.active.theme" class="form-control" id="textinput-theme" placeholder="Tema">
+          </div>
+        </div>
+        <!-- NtoN  -->
+        <!-- NtoN  end-->
+      </fieldset>
+    </form>
+    <form>
+        <fieldset>
+        <!-- OneToN -->
+        <!--query filter 1toN -->
+        <!-- query filter 1toN end-->
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource filter="" name="RoleGrid" enabled="{{User.editing || User.inserting}}" entity="api/cronapi/crud/app.entity.User/{{User.active.id}}/relation:user:Role" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="User" dependent-lazy-post-field="user"></datasource>
+        </div>
+        <button class="btn btn-primary" onclick="$('#modalRoleGrid').modal('show');" ng-click="RoleGrid.startInserting();"><i class="fa fa-plus"></i> <span class="">{{"Add" | translate}} Role</span> </button>
+        <!--search 1toN-->
+        <!-- seach 1toN end-->
+        <div data-component="crn-textinput" id="crn-textinput-descricao">
+          <div class="form-group">
+            <label for="textinput-descricao" class="">Role</label>
+            <div class="component-holder" data-component="crn-grid" id="crn-grid-RoleGrid">
+              <div crn-datasource="RoleGrid">
+                <table class="table table-bordered table-hover table-striped">
+                  <thead>
+                    <tr class="table-header">
+                      <th class="">
+                        <div class="">
+                          Id
+                        </div>
+                      </th>
+                      <th class="">
+                        <div class="">
+                          {{"template.crud.actions" | translate}}
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-content" ng-repeat="rowData in datasource.data">
+                      <td>
+                        <div>
+                          {{rowData.id}}
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <button class="btn btn-default btn-sm" ng-click="datasource.startEditing(rowData)" onclick="$('#modalRoleGrid').modal('show');"><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-default btn-sm" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="table-footer-controls">
+                  <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- OneToOne  end -->
+        </fieldset>
+    </form>
+  </div>
+</div>
+
+
+<!-- OneToOne modal -->
+<div class="modal fade" id="modalRoleGrid">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Role</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-danger wrapper text-center" ng-show="authError">
+        </div>
+        <div class="list-group list-group-sm">
+          
+          <div data-component="crn-textinput" id="crn-textinput-id">
+            <div class="form-group">
+              <label for="textinput-id">Id</label>
+              <input type="text" ng-model="RoleGrid.active.id" class="form-control" id="textinput-id" placeholder="Id" required="required">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="RoleGrid.post();" onclick="(!RoleGrid.missingRequiredField()?$('#modalRoleGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- OneToOne modal end-->

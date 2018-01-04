@@ -1,0 +1,194 @@
+<h3>Abastecimento</h3><div class="component-holder ng-binding ng-scope" data-component="crn-datasource-filter-complex" id="crn-datasource-filter-complex-359293"><fieldset><div data-component="crn-datasource-filter" class=""><div class="form-group"><label for="textinput-filter" class="">{{"template.crud.search" | translate}} Field1</label><input type="text" ng-model="vars.filter1167" mask="" mask-placeholder="" cronapp-filter="" cronapp-filter-operator="" cronapp-filter-autopost="false" crn-datasource="" class="form-control" value="" placeholder="Field1"></div></div><div data-component="crn-datasource-filter" class=""><div class="form-group"><label for="textinput-filter" class="">{{"template.crud.search" | translate}} Field2</label><input type="text" ng-model="vars.filter21167" mask="" mask-placeholder="" cronapp-filter="" cronapp-filter-operator="" cronapp-filter-autopost="false" crn-datasource="" class="form-control" value="" placeholder="Field2"></div></div><div data-component="crn-button-filter" class="" crn-datasource=""><button class="btn btn-default component-holder" cronapp-filter="" type="submit" ng-click="" xattr-size="" xattr-fullsize="" xattr-theme="btn-default"><i class="glyphicon glyphicon-search"></i> <span>{{"template.crud.search" | translate}}</span></button></div></fieldset></div>
+
+<!-- div row para pesquisa -->
+<!--<div class="row">-->
+
+    
+
+<div data-component="crn-button" id="crn-button-564202" class="">
+    <button class="btn btn-primary" type="submit" onclick="" ng-click="Abastecimento.startInserting()" ng-hide="Abastecimento.inserting || Abastecimento.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<!-- fim div row para pesquisa -->
+<!--</div>-->
+
+<datasource filter="" name="Abastecimento" entity="api/cronapi/crud/app.entity.Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Abastecimento">
+    <div crn-datasource="Abastecimento" class="" ng-hide="Abastecimento.editing || Abastecimento.inserting">
+        <table class="table  table-bordered table-hover table-striped">
+            <thead>
+            <tr class="table-header">
+                <th class="">
+                    <div class="">Data</div>
+                </th>
+                <th class="">
+                    <div class="">Km</div>
+                </th>
+                <th class="">
+                    <div class="">Valor</div>
+                </th>
+                <th class="">
+                    <div class="">Preco Litro</div>
+                </th>
+                <th class="">
+                    <div class="">Carro</div>
+                </th>
+                <th class="">
+                    <div class="">Posto</div>
+                </th>
+                <th class="">
+                    <div class="">{{"template.crud.actions" | translate}}</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-content" ng-repeat="rowData in datasource.data">
+                <td class="">
+                    <div class="">
+                                {{rowData.data | mask:'date'}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.km  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.valor  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.precoLitro  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.carro.placa}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                            {{rowData.posto.nome}}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="table-footer-controls">
+            <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+        </div>
+    </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-Abastecimento">
+    <div class="form" ng-show="Abastecimento.editing || Abastecimento.inserting">
+        <form crn-datasource="Abastecimento" class="">
+            <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+            <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+                <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <br>
+            <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+
+                <div data-component="crn-textinput" id="crn-textinput-data" class="">
+                    <div class="form-group">
+                        <label for="textinput-data" class="">Data</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="date" ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Data" mask="" mask-placeholder="" ng-required="true">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-km" class="">
+                    <div class="form-group">
+                        <label for="textinput-km" class="">Km</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="number" ng-model="Abastecimento.active.km" class="form-control" id="textinput-km" placeholder="Km" mask="" mask-placeholder="" ng-required="true">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-valor" class="">
+                    <div class="form-group">
+                        <label for="textinput-valor" class="">Valor</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="number" ng-model="Abastecimento.active.valor" class="form-control" id="textinput-valor" placeholder="Valor" mask="" mask-placeholder="" ng-required="true">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-precoLitro" class="">
+                    <div class="form-group">
+                        <label for="textinput-precoLitro" class="">Preco Litro</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="number" ng-model="Abastecimento.active.precoLitro" class="form-control" id="textinput-precoLitro" placeholder="Preco Litro" mask="" mask-placeholder="" ng-required="true">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Carro" entity="api/cronapi/crud/app.entity.Carro" keys="id" class="" dependent-by="{{Abastecimento}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-carro" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-carro" class="">Carro</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Abastecimento.active.carro" crn-datasource="Carro" class="crn-select" id="combobox-dynamic-carro" ng-required="true" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.placa}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.placa}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    <datasource name="Posto" entity="api/cronapi/crud/app.entity.Posto" keys="id" class="" dependent-by="{{Abastecimento}}"></datasource>
+
+                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-posto" class="">
+                    <div class="form-group">
+                        <label for="combobox-dynamic-posto" class="">Posto</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <ui-select ng-model="Abastecimento.active.posto" crn-datasource="Posto" class="crn-select" id="combobox-dynamic-posto" ng-required="true" theme="bootstrap">
+                                    <ui-select-match class="" placeholder="Select...">
+                                        {{$select.selected.nome}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
+                                        <div class="" data-container="true">
+                                            {{rowData.nome}}
+                                        </div>
+                                    </ui-select-choices>
+                                </ui-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                <!-- NtoN  -->
+                <!-- NtoN  end-->
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <!-- OneToN -->
+                <!-- OneToOne  end -->
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+<!-- OneToOne modal -->
+<!-- OneToOne modal end-->

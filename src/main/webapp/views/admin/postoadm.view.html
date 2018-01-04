@@ -1,0 +1,177 @@
+<h3>Posto</h3>
+
+<!-- div row para pesquisa -->
+<!--<div class="row">-->
+
+    <div ng-hide="Posto.inserting || Posto.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general" class="">
+        <div class="form-group">
+            <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
+            <input type="text" ng-model="vars.search" cronapp-filter="nome;" cronapp-filter-operator="" cronapp-filter-autopost="true" crn-datasource="Posto" class="form-control" value="" placeholder="{{'template.crud.search' | translate}}">
+        </div>
+    </div>
+
+<div data-component="crn-button" id="crn-button-564202" class="">
+    <button class="btn btn-primary" type="submit" onclick="" ng-click="Posto.startInserting()" ng-hide="Posto.inserting || Posto.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<!-- fim div row para pesquisa -->
+<!--</div>-->
+
+<datasource filter="" name="Posto" entity="api/cronapi/crud/app.entity.Posto" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Posto">
+    <div crn-datasource="Posto" class="" ng-hide="Posto.editing || Posto.inserting">
+        <table class="table  table-bordered table-hover table-striped">
+            <thead>
+            <tr class="table-header">
+                <th class="">
+                    <div class="">Nome</div>
+                </th>
+                <th class="">
+                    <div class="">Logradouro</div>
+                </th>
+                <th class="">
+                    <div class="">Numero</div>
+                </th>
+                <th class="">
+                    <div class="">Cidade</div>
+                </th>
+                
+                <th class="">
+                    <div class="">{{"template.crud.actions" | translate}}</div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-content" ng-repeat="rowData in datasource.data">
+                <td class="">
+                    <div class="">
+                                {{rowData.nome  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.logradouro  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.numero  }}
+                    </div>
+                </td>
+                <td class="">
+                    <div class="">
+                                {{rowData.cidade  }}
+                    </div>
+                </td>
+                
+                <td class="">
+                    <div class="">
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="table-footer-controls">
+            <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+        </div>
+    </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-Posto">
+    <div class="form" ng-show="Posto.editing || Posto.inserting">
+        <form crn-datasource="Posto" class="">
+            <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+            </div>
+            <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+                <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+            <br>
+            <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+
+                <div data-component="crn-textinput" id="crn-textinput-nome" class="">
+                    <div class="form-group">
+                        <label for="textinput-nome" class="">Nome</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="Posto.active.nome" class="form-control" id="textinput-nome" placeholder="Nome" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-cep" class="">
+                    <div class="form-group">
+                        <label for="textinput-cep" class="">Cep</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="Posto.active.cep" class="form-control" id="textinput-cep" placeholder="Cep" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div><button class="btn btn-default component-holder" type="submit" ng-click="cronapi.util.makeCallServerBlocklyAsync('blockly.TelaPosto:buscarCEP', null, null)" xattr-size="" xattr-fullsize="" xattr-theme="btn-default" data-component="crn-button" id="crn-button-693135"><i class="glyphicon glyphicon-home"></i> <span>{{'BuscarCEP' | translate}}</span></button>
+
+                <div data-component="crn-textinput" id="crn-textinput-logradouro" class="">
+                    <div class="form-group">
+                        <label for="textinput-logradouro" class="">Logradouro</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="Posto.active.logradouro" class="form-control" id="textinput-logradouro" placeholder="Logradouro" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-numero" class="">
+                    <div class="form-group">
+                        <label for="textinput-numero" class="">Numero</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="integer" ng-model="Posto.active.numero" class="form-control" id="textinput-numero" placeholder="Numero" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-bairro" class="">
+                    <div class="form-group">
+                        <label for="textinput-bairro" class="">Bairro</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="Posto.active.bairro" class="form-control" id="textinput-bairro" placeholder="Bairro" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-cidade" class="">
+                    <div class="form-group">
+                        <label for="textinput-cidade" class="">Cidade</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="Posto.active.cidade" class="form-control" id="textinput-cidade" placeholder="Cidade" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+
+                <div data-component="crn-textinput" id="crn-textinput-uf" class="">
+                    <div class="form-group">
+                        <label for="textinput-uf" class="">UF</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input type="text" ng-model="Posto.active.uf" class="form-control" id="textinput-uf" placeholder="UF" mask="" mask-placeholder="" ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                    </div>
+                </div>
+                    
+
+                
+                <!-- NtoN  -->
+                <!-- NtoN  end-->
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <!-- OneToN -->
+                <!-- OneToOne  end -->
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+<!-- OneToOne modal -->
+<!-- OneToOne modal end-->

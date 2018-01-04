@@ -1,0 +1,172 @@
+<h3>Posto</h3>
+<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
+  <datasource filter="" name="Posto" entity="api/cronapi/crud/app.entity.Posto" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+</div>
+<div data-component="crn-button" id="crn-button-564202">
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Posto.startInserting()" ng-hide="Posto.inserting || Posto.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+</div>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Posto">
+  <div crn-datasource="Posto" class="" ng-hide="Posto.editing || Posto.inserting">
+    <table class="table  table-bordered table-hover table-striped">
+      <thead>
+        <tr class="table-header">
+          <th class="">
+            <div class="">Nome</div>
+          </th>
+          <th class="">
+            <div class="">Cidade</div>
+          </th>
+          <th class="">
+            <div class="">Cep</div>
+          </th>
+          <th class="">
+            <div class="">Logradouro</div>
+          </th>
+          <th class="">
+            <div class="">{{"template.crud.actions" | translate}}</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-content" ng-repeat="rowData in datasource.data">
+          <td class="">
+            <div class="">
+              {{rowData.nome}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.cidade}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.cep}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              {{rowData.logradouro}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-footer-controls">
+      <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+    </div>
+  </div>
+</div>
+<div data-component="crn-form" id="crn-form-form-Posto">
+  <div class="form" ng-show="Posto.editing || Posto.inserting">
+    <form crn-datasource="Posto" class="">
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+      </div>
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+      </div>
+      <br/>
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+        <div data-component="crn-textinput" id="crn-textinput-nome">
+          <div class="form-group">
+            <label for="textinput-nome" class="">Nome</label>
+            <input
+              type="text"
+              ng-model="Posto.active.nome"
+              class="form-control"
+              id="textinput-nome"
+              placeholder="Nome"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-cep">
+          <div class="form-group">
+            <label for="textinput-cep" class="">Cep</label>
+            <input
+              type="text"
+              ng-model="Posto.active.cep"
+              class="form-control"
+              id="textinput-cep"
+              placeholder="Cep"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-logradouro">
+          <div class="form-group">
+            <label for="textinput-logradouro" class="">Logradouro</label>
+            <input
+              type="text"
+              ng-model="Posto.active.logradouro"
+              class="form-control"
+              id="textinput-logradouro"
+              placeholder="Logradouro"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-numero">
+          <div class="form-group">
+            <label for="textinput-numero" class="">Numero</label>
+            <input type="number"  ng-model="Posto.active.numero" class="form-control" id="textinput-numero" placeholder="Numero" >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-bairroi">
+          <div class="form-group">
+            <label for="textinput-bairroi" class="">Bairroi</label>
+            <input
+              type="text"
+              ng-model="Posto.active.bairroi"
+              class="form-control"
+              id="textinput-bairroi"
+              placeholder="Bairroi"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-cidade">
+          <div class="form-group">
+            <label for="textinput-cidade" class="">Cidade</label>
+            <input
+              type="text"
+              ng-model="Posto.active.cidade"
+              class="form-control"
+              id="textinput-cidade"
+              placeholder="Cidade"
+              >
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-uf">
+          <div class="form-group">
+            <label for="textinput-uf" class="">UF</label>
+            <input
+              type="text"
+              ng-model="Posto.active.uf"
+              class="form-control"
+              id="textinput-uf"
+              placeholder="UF"
+              >
+          </div>
+        </div>
+        <!-- NtoN  -->
+        <!-- NtoN  end-->
+      </fieldset>
+    </form>
+    <form>
+        <fieldset>
+            <!-- OneToN -->
+        <!-- OneToOne  end -->
+
+        </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<h2 class="lead text-center component-holder" xattr-position="text-center" data-component="crn-subtitle" id="crn-subtitle-805753">{{'CarrosCampeos' | translate}}</h2>
+<datasource name="Carroscampeoes" entity="api/cronapi/query/1hbaflwiuj0on/" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" id="crn-datasource-125318"></datasource>
+<div class="component-holder ng-binding ng-scope" data-component="crn-grid" id="crn-grid-934890">
+  <div crn-datasource="Carroscampeoes">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="table-header">
+          <th class="">
+            <div data-container="true">
+              {{'Marca' | translate}}
+            </div></th>
+          <th>
+            <div data-container="true">
+              {{'Modelo' | translate}}
+            </div></th>
+          <th>
+            <div data-container="true">
+              {{'Custokm' | translate}}
+            </div></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-content" ng-repeat="rowData in datasource.data">
+          <td class="">
+            <div data-container="true">{{rowData.marca}}</div></td>
+          <td>
+            <div data-container="true">{{rowData.modelo}}</div></td>
+          <td>
+            <div data-container="true">{{rowData.custo_medio}}</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-footer-controls">
+      <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">Load more...</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+{
+  "copies": [
+    {
+      "from": "plugins/cronapp-framework-js/js/custom.controllers.js",
+      "to": "js/custom.controllers.js"
+    },
+    {
+      "from": "plugins/cronapp-framework-js/js/customModules.js",
+      "to": "js/customModules.js"
+    }
+  ],
+  "includes": [
+    {
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/components/js/jquery.mask.min.js",
+      "type": "script"
+    },
+    {
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/components/js/jquery.inputmask.bundle.js",
+      "type": "script"
+    },
+    {
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/js/upload.service.js",
+      "type": "script"
+    },
+    {
+      "file": "index.html",
+      "script": "js/customModules.js",
+      "type": "script",
+      "onTop": true
+    },
+    {
+      "file": "index.html",
+      "script": "js/custom.controllers.js",
+      "type": "script"
+    },
+    {
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/components/js/format.min.js",
+      "type": "script"
+    },
+	{
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/js/reports/reports.service.js",
+      "type": "script"
+    },
+	{
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/js/reports/parameters.controller.js",
+      "type": "script"
+    }
+	
+  ],
+  "removes": [
+    {
+      "file": "index.html",
+      "script": "plugins/ngMask/dist/ngMask.min.js",
+      "type": "script"
+    },
+    {
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/components/js/jquery.maskMoney.js",
+      "type": "script"
+    },
+    {
+      "file": "index.html",
+      "script": "plugins/cronapp-framework-js/dist/js/format.min.js",
+      "type": "script"
+    }
+  ]
+}

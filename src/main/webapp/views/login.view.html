@@ -1,0 +1,70 @@
+<div class="container-full" data-container="true">
+    <div class="container-fluid" data-container="true">
+        <div class="row component-holder">
+                    <div class="component-holder ">
+            <div class="col-xs-12 col-md-3 col-lg-3">
+                <img src="plugins/cronapp-framework-js/dist/img/logo.png" class="center-block" width="" height="50">
+            </div>
+        </div>
+          <div class="col-xs-12 col-sm-3 col-lg-4"></div>
+          <div class="col-xs-12 col-sm-6 col-md-9  col-lg-9" data-container="true">
+            <form class="form-validation" autocomplete="off" name="form" ng-submit="login()" role="form">
+                <div class="text-danger wrapper text-center" ng-show="authError"></div>
+                <div class="col-xs-12 col-md-push-1 col-lg-3 col-md-3" data-container="true">
+                    <div class="form-group" data-container="true">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" ng-model="username.value" id="username" placeholder="{{'Login.view.Username' | translate}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-push-1 col-md-3 col-lg-3" data-container="true">
+                    <div class="form-group" data-container="true">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="password.value" id="password" placeholder="{{'Login.view.Password' | translate}}"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-push-1 col-md-1 col-lg-1" data-container="true">
+                    <div class="form-group" data-container="true">
+                        <div class="messages">
+                          <div ng-show="message.error" class="help-block">{{message.error}}</div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-push-1 col-md-2 col-lg-2" data-container="true">
+                    <div class="form-group" data-container="true">
+                        <button type="submit" class="btn btn-primary btn-block" ng-disabled="form.$invalid || vm.dataLoading">{{"Login.view.Login" | translate}}</button>
+                        <!--<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid || vm.dataLoading">{{"Login.view.Login" | translate}}</button>-->
+                    </div>
+                </div>
+                
+            </form>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-lg-4" data-container="true"></div>
+        </div>
+        <div class="row component-holder">
+            <div class="col-xs-12 col-sm-3 col-lg-4" data-container="true"></div>
+            <div class="col-xs-12 col-sm-6 col-lg-4" data-container="true">
+                
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-4" data-container="true"></div>
+        </div>
+    </div><div class="jumbotron component-holder hidden-xs" data-component="crn-jumbotron" id="crn-jumbotron-791630"> <h1 data-component="crn-title" class="component-holder text-center" xattr-position="text-center">{{'Welcome' | translate}}</h1> <h2 data-component="crn-subtitle" class="component-holder text-center" xattr-position="text-center">{{'BestValue' | translate}}</h2>    </div><button class="btn component-holder btn-warning btn-block" type="submit" ng-click="blockly.js.blockly.TelaLoginCliente.abrirModalCadastro()" xattr-size="" xattr-fullsize="btn-block" xattr-theme="btn-warning" data-component="crn-button" id="crn-button-976201"><i class="glyphicon glyphicon-plus"></i> <span>{{'NotaUser' | translate}}</span></button>
+</div>
+<div class="modal fade" id="modal67729">
+ <div class="modal-dialog">
+   <div class="modal-content">
+       <div class="component-holder modal-header">
+       
+     <div data-container="true" data-replace="true">{{'NewAccount' | translate}}</div></div>
+      <div class="modal-body">
+         <div data-container="true" data-replace="false"><div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-1005257"><div class="form-group"><label for="exampleInputEmail1">{{'Email' | translate}}</label><input type="text" data-component="crn-input" ng-model="vars.email" class="component-holder form-control" id="textinput-id" placeholder="{{'PleaseEnterEmail' | translate}}"></div></div><div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-1005257"><div class="form-group"><label for="exampleInputEmail1">{{'Password' | translate}}</label><input type="password" data-component="crn-input" ng-model="vars.senha" class="component-holder form-control" id="textinput-id" placeholder="{{'PleaseEnterPwd' | translate}}"></div></div><div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-1005257"><div class="form-group"><label for="exampleInputEmail1">{{'PasswordConfirma' | translate}}</label><input type="password" data-component="crn-input" ng-model="vars.confirmasenha" class="component-holder form-control" id="textinput-id" placeholder="{{'PleaseConfirmPwd' | translate}}"></div></div></div>
+     </div>
+     <div class="modal-footer">
+       <div data-container="true" data-replace="false"><button class="btn component-holder btn-lg btn-primary" type="submit" ng-click="cronapi.util.makeCallServerBlocklyAsync('blockly.TelaLogin:CriarUsuario', null, null)" xattr-size="btn-lg" xattr-fullsize="" xattr-theme="btn-primary" data-component="crn-button" id="crn-button-176202"><i class="glyphicon glyphicon-plus"></i> <span>{{'CreateAccount' | translate}}</span></button></div>
+     </div>
+   </div>
+ </div>
+</div>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blockly formTarget="" resourceType="JAVA" ruleDescription="graficoPosto" ruleName="graficoPosto" ruleSynchronous="false" ruleType="I">
+<block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" tooltip="graficoPosto - popular" type="procedures_defreturn" x="-350" y="130">
+<mutation>
+  <arg name="Dados"/>
+</mutation>
+<field name="NAME">popular</field>
+<comment h="80" pinned="false" w="160">graficoPosto</comment>
+</block>
+</blockly>
